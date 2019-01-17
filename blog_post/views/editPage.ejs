@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= 'blog' %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include partial/header.ejs %>
+
+    <div class="main-container">
+      <form action="/users/<%= article._id %>" method="POST">
+      	<input id="title" type="text" name="title" value="<%= article.title %>" placeholder="Title"><br><br>
+        <input id="tags" type="text" name="tags" value="<%= article.tags %>" placeholder="tags"><br><br>
+        <textarea name="description" id="description" value="<%= article.description %>" placeholder="What's on your mind?"></textarea><br>
+        <div class="btn">
+      	 <button class="submit-btn">submit</button>
+        </div>
+		  </form>
+	</div>
+  </body>
+</html>

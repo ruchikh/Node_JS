@@ -1,0 +1,11 @@
+$bgcolor: #A91C2F;
+$text-color: #fff;
+
+body {
+	background: $bgcolor;
+	color: $text-color;
+
+	h1{
+		color: $text-color;
+	}
+}
