@@ -4,10 +4,10 @@
     <title><%= 'blog' %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    Compiled and minified JavaScript
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
   </head>
   <body>
       <%- include partial/header.ejs %>
@@ -15,14 +15,13 @@
     <h1 class="blog-title">Your Article</h1>
       <% for(var i=0; i < articles.length; i++) { %>
       <div class="border">
-        <h3><a href="/users/<%= articles[i].id %>" class="" role="button"><%= articles[i].title %></a></h3>
-        <p class="truncate"><%= articles[i].description %></p>
+        <h2><a href="/posts/<%= articles[i].id %>" role="button"><%= articles[i].title %></a></h2>
         <p>Tags: <%= articles[i].tags %></p>
+        <p class=""><%= articles[i].description %></p>
         <p><%= articles[i].created_At %></p>
-        <a href="/users/<%= articles[i].id %>/likes" class="padding"><i class="fas fa-thumbs-up"></i><%= " " + articles[i].likes %></a>
-        <a href="/users/<%= articles[i].id %>/edit" class="padding"><i class="material-icons fas fa-marker"></i></a>
-        
-        <a href="/users/<%= articles[i].id %>/delete" class="padding"><i class="far fa-trash-alt"></i></a>
+        <a href="/posts/<%= articles[i].id %>/likes" class="padding"><i class="fas fa-thumbs-up"></i><%= " " + articles[i].likes %></a>
+        <a href="/posts/<%= articles[i].id %>/edit" class="padding"><i class="material-icons fas fa-marker"></i></a>
+        <a href="/posts/<%= articles[i].id %>/delete" class="padding"><i class="far fa-trash-alt"></i></a>
       </div>
       <% } %>
     </div>

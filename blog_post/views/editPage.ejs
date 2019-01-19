@@ -8,10 +8,10 @@
     <%- include partial/header.ejs %>
 
     <div class="main-container">
-      <form action="/users/<%= article._id %>" method="POST">
+      <form action="/posts/<%= article._id %>" method="POST">
       	<input id="title" type="text" name="title" value="<%= article.title %>" placeholder="Title"><br><br>
         <input id="tags" type="text" name="tags" value="<%= article.tags %>" placeholder="tags"><br><br>
-        <textarea name="description" id="description" value="<%= article.description %>" placeholder="What's on your mind?"></textarea><br>
+        <textarea name="description" class="description" value="<%= article.description %>" placeholder="What's on your mind?"><%= article.description %></textarea><br>
         <div class="btn">
       	 <button class="submit-btn">submit</button>
         </div>

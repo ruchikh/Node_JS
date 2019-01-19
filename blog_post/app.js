@@ -13,11 +13,15 @@ mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true}, (err
 });
 
 require('./models/Article')
+require('./models/Comment')
+
 var Article = mongoose.model('Article')
+var Comment = mongoose.model('Comment')
+
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var postsRouter = require('./routes/posts');
 
 var app = express();
 
@@ -32,28 +36,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
-
-
+app.use('/posts', postsRouter);
 
 app.get('/user', (req, res) => {
 	Article.find({}, (err, articles) => {
-		console.log(articles)
 		if(err) res.status(401).send(err)
 	})
 })
 
 app.post('/user', (req, res) => {
 	article = new Article(req.body)
-	console.log(req.body)
 	article.save((err, article) => {
 		if(err) res.status(401).send(err)
-		 res.redirect('/users')
+		 res.redirect('/posts')
 
 	})
 })
