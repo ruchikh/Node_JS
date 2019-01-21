@@ -8,6 +8,10 @@ let CommentSchema = new mongoose.Schema(
     postId: {
         type: Schema.Types.ObjectId,
         ref: 'Article'
+      },
+      author: {
+      	type: Schema.Types.ObjectId,
+      	ref: 'User'
       }
   }
 );

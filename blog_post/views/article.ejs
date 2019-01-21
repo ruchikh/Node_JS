@@ -7,29 +7,34 @@
     <body>
 
       <%- include partial/header.ejs %>
-      <div class="article-page border">
-        <h1 class="article"><%= article.title %></h1>
-        <p>Tags: <%= article.tags %></p>
-        <p><%= article.description %></p>
+      <div class="article-page border main-container">
+        <h2 class="article"><%= article.title %></h3>
         <a href="/posts/<%= article.id %>/delete"><i class="far fa-trash-alt"></i></a>
         <a href="/posts/<%= article.id %>/edit"><i class="material-icons fas fa-marker"></i></a>
+        <p class="blog-description">Tags: <%= article.tags %></p>
+        <p class="blog-description"><%= article.description %></p>
 
-        <div class="">
+
+
+        <div class="comment-section">
           <% for(var i=0; i < article.comments.length; i++) { %>
-            <h2 class="comment-heading"><%= article.comments[i].title %></h1>
+          <div class="comment"> 
+         
+            <p class="comment-heading blog-description">User: <%= article.comments[i].title %></p> 
             <a href="/posts/<%= article.comments[i]._id %>/comment/delete/"><i class="far fa-trash-alt"></i></a>
             <a href="/posts/<%= article.comments[i]._id %>/comment/edit/"><i class="material-icons fas fa-marker"></i></a>
+          </div>
           <% } %>
         </div>
         <div>
+          <!-- <% if(locals.user) { %> -->
           <p>comment here....</p>
-          <% if(article) { %>
-           <form action="/posts/<%= article._id %>/comment" method="POST" >
+           <form action="/posts/<%= article.id %>/comment" method="POST" >
               <textarea name="title" rows="5" cols="50" placeholder="write comment here..."></textarea>
               <input type="hidden" name="postId" value="<%= article._id %>"><br>
               <button class="submit">submit</button>
             </form>
-          <% } %>   
+          <!-- <% } %>    -->
         </div>
       </div>
     </body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= 'title' %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<!-- <%- include partial/header.ejs %> -->
+    <div class="register-user">
+    <h1><a href="/login">SignIn</a></h1>
+    <h1><%= 'Sign up' %></h1>
+	    <form action="/register" method="POST">
+	        <fieldset>
+	            <label for="name">Name:</label>
+	            <input type="text" id="name" name="name" placeholder="Enter your full name" />
+	            <label for="email">Email:</label>
+	            <input type="email" id="email" name="email" placeholder="Enter your email address" />
+
+	            <label for="message">password:</label>
+	            <input type="password" id="password" name="password" placeholder="Enter your password" />
+	            <div class="btn">
+	            <button class="form-btn">Create my account</button>
+	            </div>
+	        </fieldset>
+	    </form>
+		</div>
+  </body>
+</html>

@@ -12,7 +12,6 @@ mongoose.connect('mongodb://localhost:27017/Users', {useNewUrlParser: true}, (er
 	}
 });
 const bcrypt = require('bcrypt');
-
 var app = express();
 require('./models/User');
 var User = mongoose.model('User')

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<!-- <%- include partial/header.ejs %> -->
+    <div class="register">
+    <div class="register-user">
+    <h1><a href="/register">SignUp</a></h1>
+    <h1><%= 'SignIn' %></h1>
+      <form action="/login" method="POST">
+          <fieldset>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" />
+            <label for="message">password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" />
+            <div class="btn">
+            <button class="form-btn">LogIn your Account</button>
+            </div>
+        	</fieldset>
+	    </form>
+		</div>
+    </div>
+  </body>
+</html>

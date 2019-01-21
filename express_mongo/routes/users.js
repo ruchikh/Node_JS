@@ -6,9 +6,9 @@ var User = mongoose.model('User');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-	User.find({}, (err, user) => {
+	User.find({}, (err, users) => {
 		console.log(user)
-  res.render('users', { users:  user});
+  res.render('users', { users:  users});
 	})
 });
 

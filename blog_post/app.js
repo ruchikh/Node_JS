@@ -4,6 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const moment = require('moment');
+const date = moment();
 mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true}, (err) => {
 	if(err){
 		throw err
@@ -14,14 +18,21 @@ mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true}, (err
 
 require('./models/Article')
 require('./models/Comment')
+require('./models/User')
+
 
 var Article = mongoose.model('Article')
 var Comment = mongoose.model('Comment')
+var User = mongoose.model('User')
+
 
 
 
 var indexRouter = require('./routes/index');
 var postsRouter = require('./routes/posts');
+var registerRouter = require('./routes/register');
+
+
 
 var app = express();
 
@@ -33,26 +44,27 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+	secret: 'keyboard', 
+	resave: false,
+	saveUninitialized: true, 
+	store: new MongoStore({ mongooseConnection: mongoose.connection })}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', indexRouter);
-app.use('/posts', postsRouter);
+app.use('/posts',  postsRouter);
+app.use('/register', registerRouter)
 
-app.get('/user', (req, res) => {
-	Article.find({}, (err, articles) => {
-		if(err) res.status(401).send(err)
-	})
+
+app.get('/posts/:id', function(req, res){
+  var id = req.params.name; 
+  console.log(id)   
+  User.findOne({id : _id}, function(err, result){      
+    res.render('user', {user : user}
+    );
+  })
 })
-
-app.post('/user', (req, res) => {
-	article = new Article(req.body)
-	article.save((err, article) => {
-		if(err) res.status(401).send(err)
-		 res.redirect('/posts')
-
-	})
-})
-
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -66,3 +78,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+

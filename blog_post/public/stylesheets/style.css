@@ -43,40 +43,62 @@ table {
 }
 
 body {
-  /*padding: 0px 70px;*/
-  font: "Lucida Grande", Helvetica, Arial, sans-serif;
+  line-height: 1.9em;
+  font-family: 'Open Sans Condensed', sans-serif;
+  /*background: aliceblue;*/
 }
 
 a {
   color: #00B7FF;
-  /*color: white;*/
+}
+h2{
+	font-weight: 300;
+	text-transform: capitalize;
 }
 
-.article-page{
-	
+.blog-description {
+	font-size: 20px;
+	word-spacing: 0.2em;
 }
 
 .article{
 	color: #00B7FF;
+	display: inline-block;
+
 }
 
 .main-container{
 	width: 80%;
 	margin: 0 auto;
 	margin-top: 2em;
-
+	border: 1px solid border;
 }
-.header {
+
+.header{
 	background: #0F2653;
-	font-weight: 400;
+	font-weight: 300;
 	color: white;
-	z-index: 0;
 	display: grid;
-	grid-template-columns: 6fr 1fr;
+	grid-template-columns: repeat(2, 1fr)
+}
+
+.secondary-user {
+	background: #0F2653;
+	font-weight: 300;
+	color: white;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr)
+	/*justify-content: space-between;*/
+}
+
+.logout-btn {
+	padding: 5px 15px;
+	margin-left:  20px;
 }
 
 .logo{
 	margin-left: 3em;
+	color: white;
 }
 
 input{
@@ -85,7 +107,8 @@ input{
 	font-size: 1em;
 	outline: none;
 	border:1px solid gray;
-	font: "Lucida Grande", Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans Condensed', sans-serif;
+	/*font: "Lucida Grande", Helvetica, Arial, sans-serif;*/
 }
 
 
@@ -116,6 +139,9 @@ h3 a{
 	margin-bottom: 20px 0px;
 	font-size: 1.5em;
 }
+h2{
+	font-size: 30px;
+}
 
 p{
 	padding: 6px 0;
@@ -128,12 +154,19 @@ p{
 .border{
 	/*border: 1px solid gray;*/
 	box-shadow: 2px 2px 8px 1px #ccc;
+	/*border: 1px solid gray;*/
 	padding: 30px;
 	margin-top: 1em;
+}
+.border-header{
+	display: grid;
+	grid-gap: 15px;
+	grid-template-columns: repeat(3, 1fr)
 }
 
 .blog-title{
 	font-size: 2.5em;
+	color: #00B7FF;
 }
 
 .padding{
@@ -145,20 +178,21 @@ p{
 }
 
 .comment-heading {
-	font-size: 15px;
+	font-size: 20px;
 	/*border: 1px solid gray;*/
 	padding: 10px;
 	margin-top: 1em;
+	display: inline-block;
 }
 
 .create-btn{
-	height: 45px;
-	width: 45px;
+	height: 40px;
+	width: 40px;
 	border-radius: 50%;
 	margin-top: 17px;
 	background: white;
 	border: none;
-	font-size: 50px;
+	font-size: 40px;
 	outline: none;
 }
 
@@ -173,4 +207,104 @@ p{
 	color: white;
 	font-size: 15px;
 	border-radius: 5px;
+}
+
+.comment{
+	display: block;
+
+}
+
+.register-user {
+	width: 60%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 2px 2px 8px 1px #ccc;
+	padding: 30px;
+	background: #80bfff;
+}
+
+.form-btn{
+	background: #0F2653;
+	padding: 10px 20px;
+	border: none;
+	color: white;
+	text-align: center;
+	font-weight: 600;
+}
+
+.btn{
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.fa-sign-out-alt{
+	font-size: 40px;
+	padding: 0px 20px;
+	color: white;
+}
+
+.name{
+	text-decoration-line: none;
+	padding: 20px;
+	font-size: 40px;
+	border-left: 1px solid white;
+	height: 20px;
+	width: 20px;
+	color: white;
+	font-family: 'Charm', cursive;
+	font-weight: 600;
+	padding-left: 20px;
+	/*border-radius: 50%;*/
+}
+
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+  /*position: absolute;*/
+  /*left: 50%;*/
+  /*top: 10%;*/
+  /*transform: translate(-50%);*/
+  -webkit-font-smoothing: antialiased;
+  margin: 0 auto;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 9;
+  text-decoration: none;
+  transition: 0.6s ease-in-out 0.4s;
+}
+
+[data-tooltip]:before {
+  content: "";
+  height: 0;
+  width: 0;
+  top: calc(100% - 9px);
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent #0F2653 transparent;
+}
+
+[data-tooltip]:after {
+  content: attr(data-tooltip);
+  white-space: nowrap;
+  background: #0F2653;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  top: calc(100% + 11px);
+  color: #fff;
+  border-radius: 2px;
+  text-shadow: 0px 1px 1px #000;
+  /*z-index: 9;*/
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  background: #0F2653;
+  color: white;
+  text-decoration: none;
+  opacity: 1;
+  visibility: visible;
+  transition: 0.4s ease-in-out 0.3s;
 }
