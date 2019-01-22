@@ -9,17 +9,18 @@
     <header>
       <div class="header">
         <% if(!locals.user) { %>
-
         <h1><a class="logo" href="/"><%= 'Blog-Post' %></a></h1>
-         <h1><a class="logo" href="/login"><%= 'Login' %></a></h1>
+         <h1><a class="logo1" href="/login"><i class="fas fa-sign-in-alt"></i></a></h1>
         <% } %>
       </div>
       <div class="secondary-user">
         <% if(locals.user) { %>
-        <h1><a class="logo" href="/posts"><%= 'Blog-Post' %></a></h1>      
+        <h1><a class="logo" href="/posts"><%= 'Blog-Post' %></a></h1>   
+        <div>
         <a data-tooltip="create article" href="/posts/new"><button class="create-btn">+</button></a>
         <a data-tooltip="logout" class="logout" href="/logout"><i class="fas fa-sign-out-alt"></i></a>
         <a href="/profile" class="name"><%= user.name[0].toUpperCase() %></a>
+      </div>
         <% } %>
       </div>
 
